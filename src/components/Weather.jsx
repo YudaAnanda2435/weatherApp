@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react"; // Tambahkan useState di sini
 import "./Weather.css";
-import search_icon from "../assets/search.png";
+// import search_icon from "../assets/search.png";
 import clear_icon from "../assets/clear.png";
 import cloud_icon from "../assets/cloud.png";
 import drizzle_icon from "../assets/drizzle.png";
