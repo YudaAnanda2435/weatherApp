@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react"; // Tambahkan useState di sini
+import React, { useEffect, useState, useRef } from "react";
 import "./Weather.css";
 // import search_icon from "../assets/search.png";
 import clear_icon from "../assets/clear.png";
@@ -12,7 +12,7 @@ import searching_icon from "../assets/searching.png";
 
 const Weather = () => {
   const inputRef = useRef();
-  const [weatherData, setWeatherData] = useState(false); // useState diinisialisasi dengan nilai false
+  const [weatherData, setWeatherData] = useState(false);
 
   const allIcons = {
     "01d": clear_icon,
@@ -42,7 +42,6 @@ const Weather = () => {
       }`;
       const response = await fetch(url);
 
-      // Tangani error jika status API bukan 200
       if (!response.ok) {
         if (response.status === 404) {
           alert("City Not Found. Please try another city.");
@@ -72,10 +71,21 @@ const Weather = () => {
     search("Jampang Kulon");
   }, []);
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      search(inputRef.current.value);
+    }
+  };
+
   return (
     <div className="weather">
       <div className="search-bar">
-        <input ref={inputRef} type="text" placeholder="Search" />
+        <input
+          ref={inputRef}
+          type="text"
+          placeholder="Search"
+          onKeyDown={handleKeyPress} // Tambahkan event listener
+        />
         <img
           src={searching_icon}
           alt=""
